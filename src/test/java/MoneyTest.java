@@ -1,38 +1,49 @@
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MoneyTest {
-    @DisplayName("should return true for two valid money having same value")
     @Test
-    void expectingTrueForSameMoney() {
+    void shouldReturnTrueForTwoValidMoneyObjectsWithSameValues() {
         Money money = new Money( 100 );
         Money money1 = new Money( 100 );
         assertEquals( money, money1 );
     }
 
-    @DisplayName("should return false for two valid money having different values")
     @Test
-    void expectingFalseForDifferentPersons() {
+    void shouldReturnFalseForTwoMoneyObjectsWithDifferentValues() {
         Money money = new Money( 20 );
         Money money1 = new Money( 78 );
         assertNotEquals( money, money1 );
     }
 
-    @DisplayName("should return false for different objects")
     @Test
-    void expectingFalseForInvalidObject() {
+    void shouldReturnFalseForTwoDifferentObjects() {
         Money money = new Money( 100 );
         assertNotEquals( money, 12 );
     }
 
-    @DisplayName( "should return money of 90rs for 40rs and 50rs" )
     @Test
-    void expecting90_for40plus50(){
+    void shouldReturn90_for40plus50(){
         Money money = new Money( 40 );
         Money money1 = new Money( 50 );
         Money result = new Money( 90 );
         assertEquals( money.add( money1 ),result );
+    }
+
+    @Test
+    void shouldReturn18_for50minus32(){
+        Money money = new Money( 50 );
+        Money money1 = new Money( 32 );
+        Money result = new Money( 18 );
+        assertEquals( money.subtract( money1 ),result );
+    }
+
+    @Test
+    void should24_for72DividedBy3(){
+        Money money = new Money( 72 );
+        Money money1 = new Money( 3 );
+        Money result = new Money( 24 );
+        assertEquals( money.divide( money1 ),result );
     }
 }

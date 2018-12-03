@@ -20,6 +20,14 @@ public class Money {
     }
 
     Money add(Money money) {
-        return new Money( this.value + money.value );
+        return new Money( value + money.value );
+    }
+
+    Money subtract(Money money) {
+        return new Money( value - money.value );
+    }
+
+    Money divide(Money money) {
+        return new Money( value / money.value );
     }
 }
