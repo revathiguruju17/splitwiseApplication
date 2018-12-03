@@ -19,27 +19,27 @@ public class Money {
         return Objects.hash( value );
     }
 
-    Money add(Money money) throws NegativeMoneyException {
+    Money add(Money money) throws IllegalArgumentException {
         this.checkForNegativeNumbers();
         money.checkForNegativeNumbers();
         return new Money( value + money.value );
     }
 
-    Money subtract(Money money) throws NegativeMoneyException {
+    Money subtract(Money money) throws IllegalArgumentException {
         this.checkForNegativeNumbers();
         money.checkForNegativeNumbers();
         return new Money( value - money.value );
     }
 
-    Money divide(Money money) throws NegativeMoneyException {
+    Money divide(Money money) throws IllegalArgumentException {
         this.checkForNegativeNumbers();
         money.checkForNegativeNumbers();
         return new Money( value / money.value );
     }
 
-    void checkForNegativeNumbers() throws NegativeMoneyException {
+    void checkForNegativeNumbers() throws IllegalArgumentException {
         if(value<1){
-            throw new NegativeMoneyException( "Money should not be negative. Enter valid money" );
+            throw new IllegalArgumentException( "Money should not be negative. Enter valid money" );
         }
     }
 }
