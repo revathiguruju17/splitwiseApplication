@@ -59,4 +59,11 @@ class MoneyTest {
         Money money1 = new Money( 90 );
         assertThrows( IllegalArgumentException.class, () -> money.add( money1 ) );
     }
+
+    @Test
+    void shouldReturnStringForGivenMoneyObject(){
+        Money money = new Money( 10 );
+        String result = "10";
+        assertEquals( result, money.toString() );
+    }
 }

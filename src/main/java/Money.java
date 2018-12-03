@@ -42,4 +42,9 @@ public class Money {
             throw new IllegalArgumentException( "Money should not be negative. Enter valid money" );
         }
     }
+
+    @Override
+    public String toString() {
+        return Integer.toString( value );
+    }
 }
