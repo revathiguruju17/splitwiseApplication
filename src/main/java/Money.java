@@ -48,7 +48,9 @@ public class Money {
         return Integer.toString( value );
     }
 
-    boolean compare(Money money) {
+    boolean isLesser(Money money) {
         return value < money.value;
     }
+
+    boolean isGreater(Money money) { return value > money.value; }
 }

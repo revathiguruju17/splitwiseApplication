@@ -13,7 +13,16 @@ class Friend {
 
     String getName() { return name; }
 
-    public void setExpense(Money owedMoney) {
+    void decreaseExpense(Money owedMoney) {
         expense = expense.subtract( owedMoney );
+    }
+
+    void increaseExpense(Money owedMoney) {
+        expense = expense.add( owedMoney );
+    }
+
+    @Override
+    public String toString() {
+        return name+" "+expense.toString();
     }
 }

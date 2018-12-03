@@ -71,15 +71,31 @@ class MoneyTest {
     void shouldReturnTrueFor10LesserThan30(){
         Money money = new Money( 10 );
         Money money1 = new Money( 30 );
-        boolean isLesser = money.compare( money1 );
+        boolean isLesser = money.isLesser( money1 );
         assertTrue(isLesser);
     }
 
     @Test
-    void shouldReturnFalseFor58GreaterThan100(){
+    void shouldReturnFalseFor58GreaterThan30(){
         Money money = new Money( 58 );
-        Money money1 = new Money( 100 );
-        boolean isLesser = money1.compare( money);
+        Money money1 = new Money( 30 );
+        boolean isLesser = money.isLesser( money1);
         assertFalse(isLesser);
+    }
+
+    @Test
+    void shouldReturnTrueFor10GreaterThan3(){
+        Money money = new Money( 10 );
+        Money money1 = new Money( 3 );
+        boolean isGreater = money.isGreater( money1 );
+        assertTrue(isGreater);
+    }
+
+    @Test
+    void shouldReturnFalseFor158GreaterThan298(){
+        Money money = new Money( 158 );
+        Money money1 = new Money( 298 );
+        boolean isGreater = money.isGreater( money1);
+        assertFalse(isGreater);
     }
 }
