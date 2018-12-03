@@ -22,7 +22,7 @@ public class Money {
     Money add(Money money) throws IllegalArgumentException {
         this.checkForNegativeNumbers();
         money.checkForNegativeNumbers();
-        return new Money( value + money.value );
+        return new Money( this.value + money.value );
     }
 
     Money subtract(Money money) throws IllegalArgumentException {
@@ -38,7 +38,7 @@ public class Money {
     }
 
     void checkForNegativeNumbers() throws IllegalArgumentException {
-        if(value<1){
+        if(value<0){
             throw new IllegalArgumentException( "Money should not be negative. Enter valid money" );
         }
     }
