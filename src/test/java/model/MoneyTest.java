@@ -1,3 +1,6 @@
+package model;
+
+import model.Money;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -68,7 +71,7 @@ class MoneyTest {
     }
 
     @Test
-    void shouldReturnTrueFor10LesserThan30(){
+    void shouldReturnTrueIf_10_LesserThan30(){
         Money money = new Money( 10 );
         Money money1 = new Money( 30 );
         boolean isLesser = money.isLesser( money1 );
@@ -76,7 +79,7 @@ class MoneyTest {
     }
 
     @Test
-    void shouldReturnFalseFor58GreaterThan30(){
+    void shouldReturnFalseIf_58_GreaterThan_30(){
         Money money = new Money( 58 );
         Money money1 = new Money( 30 );
         boolean isLesser = money.isLesser( money1);
@@ -84,7 +87,7 @@ class MoneyTest {
     }
 
     @Test
-    void shouldReturnTrueFor10GreaterThan3(){
+    void shouldReturnTrueIf_10_GreaterThan3(){
         Money money = new Money( 10 );
         Money money1 = new Money( 3 );
         boolean isGreater = money.isGreater( money1 );
@@ -92,7 +95,7 @@ class MoneyTest {
     }
 
     @Test
-    void shouldReturnFalseFor158GreaterThan298(){
+    void shouldReturnFalseIf_158_GreaterThan_298(){
         Money money = new Money( 158 );
         Money money1 = new Money( 298 );
         boolean isGreater = money.isGreater( money1);

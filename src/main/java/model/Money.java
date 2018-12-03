@@ -1,9 +1,11 @@
+package model;
+
 import java.util.Objects;
 
 public class Money {
     private int value;
 
-    Money(int value) {
+    public Money(int value) {
         this.value = value;
     }
 
@@ -39,7 +41,7 @@ public class Money {
 
     void checkForNegativeNumbers() throws IllegalArgumentException {
         if (value < 0) {
-            throw new IllegalArgumentException( "Money should not be negative. Enter valid money" );
+            throw new IllegalArgumentException( "model.Money should not be negative. Enter valid money" );
         }
     }
 

@@ -1,3 +1,7 @@
+package model;
+
+import model.Money;
+import model.Transaction;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

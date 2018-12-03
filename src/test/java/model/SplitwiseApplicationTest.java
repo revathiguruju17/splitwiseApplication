@@ -1,3 +1,5 @@
+package model;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,9 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SplitwiseApplicationTest {
 
     @Test
-    void shouldReturn110ForAverageOf100_40_100_200() {
-        Trip trip = new Trip();
-        List<Friend> friends = trip.friendsInTheTrip();
+    void shouldReturn_110_ForAverageOf100_40_100_200() {
+        List<Friend> friends = new ArrayList<>();
+        friends.add( new Friend( "A", new Money( 100 ) ) );
+        friends.add( new Friend( "B", new Money( 40 ) ) );
+        friends.add( new Friend( "C", new Money( 100 ) ) );
+        friends.add( new Friend( "D", new Money( 200 ) ) );
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
         Money average = splitwiseApplication.calculateAverage( friends );
         Money result = new Money( 110 );
@@ -18,12 +23,12 @@ class SplitwiseApplicationTest {
     }
 
     @Test
-    void shouldReturnA_D10_B_D70_C_D10() {
+    void shouldReturn_A_D_10__B_D_70__C_D_10() {
         List<Friend> friends = new ArrayList<>();
-        friends.add( new Friend( "A", new Money( 100 ) ));
-        friends.add( new Friend( "B", new Money( 40 ) ));
-        friends.add( new Friend( "C", new Money( 100 ) ));
-        friends.add( new Friend( "D", new Money( 200) ));;
+        friends.add( new Friend( "A", new Money( 100 ) ) );
+        friends.add( new Friend( "B", new Money( 40 ) ) );
+        friends.add( new Friend( "C", new Money( 100 ) ) );
+        friends.add( new Friend( "D", new Money( 200 ) ) );
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
         List<Transaction> transactions = splitwiseApplication.calculateTransactions( friends );
         String actual = transactions.get( 0 ).toString();
@@ -38,12 +43,12 @@ class SplitwiseApplicationTest {
     }
 
     @Test
-    void shouldReturnC_A40_D_A40_D_B10() {
+    void shouldReturn_C_A_40__D_A_40__D_B_10() {
         List<Friend> friends = new ArrayList<>();
-        friends.add( new Friend( "A", new Money( 160 ) ));
-        friends.add( new Friend( "B", new Money( 90 ) ));
-        friends.add( new Friend( "C", new Money( 40 ) ));
-        friends.add( new Friend( "D", new Money( 30 ) ));
+        friends.add( new Friend( "A", new Money( 160 ) ) );
+        friends.add( new Friend( "B", new Money( 90 ) ) );
+        friends.add( new Friend( "C", new Money( 40 ) ) );
+        friends.add( new Friend( "D", new Money( 30 ) ) );
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
         List<Transaction> transactions = splitwiseApplication.calculateTransactions( friends );
         String actual = transactions.get( 0 ).toString();
@@ -55,5 +60,21 @@ class SplitwiseApplicationTest {
         String actual2 = transactions.get( 2 ).toString();
         String expected2 = "D->B, 10";
         assertEquals( actual2, expected2 );
+    }
+
+    @Test
+    void shouldReturn_A_B_58__C_B_21() {
+        List<Friend> friends = new ArrayList<>();
+        friends.add( new Friend( "A", new Money( 163 ) ) );
+        friends.add( new Friend( "B", new Money( 300 ) ) );
+        friends.add( new Friend( "C", new Money( 200 ) ) );
+        SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
+        List<Transaction> transactions = splitwiseApplication.calculateTransactions( friends );
+        String actual = transactions.get( 0 ).toString();
+        String expected = "A->B, 58";
+        assertEquals( actual, expected );
+        String actual1 = transactions.get( 1 ).toString();
+        String expected1 = "C->B, 21";
+        assertEquals( actual1, expected1 );
     }
 }

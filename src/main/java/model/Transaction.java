@@ -1,6 +1,6 @@
-import java.util.List;
+package model;
 
-class Transaction {
+public class Transaction {
     private String fromFriend;
     private String toFriend;
     private Money money;
@@ -8,11 +8,11 @@ class Transaction {
     Transaction(String fromFriend, String toFriend, Money money) {
         this.fromFriend = fromFriend;
         this.toFriend = toFriend;
-        this.money=money;
+        this.money = money;
     }
 
     @Override
     public String toString() {
-        return fromFriend+"->"+toFriend+", "+money.toString();
+        return fromFriend + "->" + toFriend + ", " + money.toString();
     }
 }

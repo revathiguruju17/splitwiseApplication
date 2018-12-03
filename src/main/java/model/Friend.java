@@ -1,8 +1,10 @@
-class Friend {
+package model;
+
+public class Friend {
     private String name;
     private Money expense;
 
-    Friend(String name, Money expense) {
+    public Friend(String name, Money expense) {
         this.name = name;
         this.expense = expense;
     }
@@ -11,7 +13,9 @@ class Friend {
         return expense;
     }
 
-    String getName() { return name; }
+    String getName() {
+        return name;
+    }
 
     void decreaseExpense(Money owedMoney) {
         expense = expense.subtract( owedMoney );
@@ -23,6 +27,6 @@ class Friend {
 
     @Override
     public String toString() {
-        return name+" "+expense.toString();
+        return name + " " + expense.toString();
     }
 }
