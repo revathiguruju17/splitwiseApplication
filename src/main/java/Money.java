@@ -38,7 +38,7 @@ public class Money {
     }
 
     void checkForNegativeNumbers() throws IllegalArgumentException {
-        if(value<0){
+        if (value < 0) {
             throw new IllegalArgumentException( "Money should not be negative. Enter valid money" );
         }
     }
@@ -46,5 +46,9 @@ public class Money {
     @Override
     public String toString() {
         return Integer.toString( value );
+    }
+
+    boolean compare(Money money) {
+        return value < money.value;
     }
 }

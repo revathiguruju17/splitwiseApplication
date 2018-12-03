@@ -1,4 +1,4 @@
-public class Friend {
+class Friend {
     private String name;
     private Money expense;
 
@@ -7,7 +7,13 @@ public class Friend {
         this.expense = expense;
     }
 
-    public Money getExpense() {
+    Money getExpense() {
         return expense;
+    }
+
+    String getName() { return name; }
+
+    public void setExpense(Money owedMoney) {
+        expense = expense.subtract( owedMoney );
     }
 }

@@ -66,4 +66,20 @@ class MoneyTest {
         String result = "10";
         assertEquals( result, money.toString() );
     }
+
+    @Test
+    void shouldReturnTrueFor10LesserThan30(){
+        Money money = new Money( 10 );
+        Money money1 = new Money( 30 );
+        boolean isLesser = money.compare( money1 );
+        assertTrue(isLesser);
+    }
+
+    @Test
+    void shouldReturnFalseFor58GreaterThan100(){
+        Money money = new Money( 58 );
+        Money money1 = new Money( 100 );
+        boolean isLesser = money1.compare( money);
+        assertFalse(isLesser);
+    }
 }

@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,10 +22,14 @@ class SplitwiseApplicationTest {
         List<Friend> friends = trip.friendsInTheTrip();
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
         List<Transaction> transactions = splitwiseApplication.calculateTransactions( friends );
-        List<Transaction> result = new ArrayList<>();
-        result.add( new Transaction( "A", "D", new Money( 10 ) ) );
-        result.add( new Transaction( "B", "D", new Money( 70 ) ) );
-        result.add( new Transaction( "C", "D", new Money( 10 ) ) );
-        assertEquals( result, transactions );
+        String actual = transactions.get( 0 ).toString();
+        String expected = "A->D, 10";
+        assertEquals( actual,expected );
+        String actual1 = transactions.get( 1 ).toString();
+        String expected1 = "B->D, 70";
+        assertEquals( actual1,expected1 );
+        String actual2 = transactions.get( 2 ).toString();
+        String expected2 = "C->D, 10";
+        assertEquals( actual2,expected2 );
     }
 }
