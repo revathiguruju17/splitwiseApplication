@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Transaction {
     private String fromFriend;
     private String toFriend;
@@ -14,5 +16,20 @@ public class Transaction {
     @Override
     public String toString() {
         return fromFriend + "->" + toFriend + ", " + money.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Transaction)) return false;
+        Transaction that = (Transaction) o;
+        return Objects.equals( fromFriend, that.fromFriend ) &&
+                Objects.equals( toFriend, that.toFriend ) &&
+                Objects.equals( money, that.money );
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash( fromFriend, toFriend, money );
     }
 }
