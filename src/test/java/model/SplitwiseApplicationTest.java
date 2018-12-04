@@ -15,7 +15,6 @@ class SplitwiseApplicationTest {
         friends.add( new Friend( "A", new Money( 0 ) ) );
         friends.add( new Friend( "B", new Money( 0 ) ) );
         friends.add( new Friend( "C", new Money( 0 ) ) );
-        friends.add( new Friend( "D", new Money( 0 ) ) );
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
         Money actual = splitwiseApplication.calculateAverage( friends );
         Money expected = new Money( 0 );
@@ -47,15 +46,36 @@ class SplitwiseApplicationTest {
     }
 
     @Test
-    void shouldReturnZeroTransactionsWhenAllFriendsHaveEqualExpenses(){
-        List<Friend> friends = new ArrayList<>(  );
+    void shouldCalculateCorrectAverageMoneyForFourFriendsHavingMoneyOf_101_158_69() {
+        List<Friend> friends = new ArrayList<>();
+        friends.add( new Friend( "A", new Money( 101 ) ) );
+        friends.add( new Friend( "B", new Money( 158 ) ) );
+        friends.add( new Friend( "C", new Money( 69 ) ) );
+        SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
+        Money actual = splitwiseApplication.calculateAverage( friends );
+        Money expected = new Money( 109.33 );
+        assertEquals( expected, actual );
+    }
+
+    @Test
+    void shouldReturnZeroTransactionsWhenAllFriendsHaveZeroExpenses() {
+        List<Friend> friends = new ArrayList<>();
+        friends.add( new Friend( "A", new Money( 0 ) ) );
+        friends.add( new Friend( "B", new Money( 0 ) ) );
+        SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
+        List<Transaction> result = splitwiseApplication.calculateTransactions( friends );
+        assertTrue( result.isEmpty() );
+    }
+
+    @Test
+    void shouldReturnZeroTransactionsWhenAllFriendsHaveEqualExpenses() {
+        List<Friend> friends = new ArrayList<>();
         friends.add( new Friend( "A", new Money( 100 ) ) );
         friends.add( new Friend( "B", new Money( 100 ) ) );
         friends.add( new Friend( "C", new Money( 100 ) ) );
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
         List<Transaction> result = splitwiseApplication.calculateTransactions( friends );
-        List<Transaction> expected = new ArrayList<>(  );
-        assertEquals( expected,result );
+        assertTrue( result.isEmpty() );
     }
 
     @Test

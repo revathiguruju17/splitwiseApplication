@@ -1,6 +1,5 @@
 package model;
 
-import model.Money;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -66,7 +65,7 @@ class MoneyTest {
     @Test
     void shouldReturnStringForGivenMoneyObject(){
         Money money = new Money( 10 );
-        String result = "10";
+        String result = "10.0";
         assertEquals( result, money.toString() );
     }
 

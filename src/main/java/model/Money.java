@@ -3,9 +3,9 @@ package model;
 import java.util.Objects;
 
 public class Money {
-    private int value;
+    private double value;
 
-    public Money(int value) {
+    public Money(double value) {
         this.value = value;
     }
 
@@ -36,7 +36,9 @@ public class Money {
     Money divide(Money money) throws IllegalArgumentException {
         this.checkForNegativeNumbers();
         money.checkForNegativeNumbers();
-        return new Money( value / money.value );
+        Money result = new Money( value/money.value );
+        result.value = Math.round( result.value*100.0 )/100.0;
+        return result;
     }
 
     void checkForNegativeNumbers() throws IllegalArgumentException {
@@ -47,12 +49,14 @@ public class Money {
 
     @Override
     public String toString() {
-        return Integer.toString( value );
+        return Double.toString( value );
     }
 
     boolean isLesser(Money money) {
         return value < money.value;
     }
 
-    boolean isGreater(Money money) { return value > money.value; }
+    boolean isGreater(Money money) {
+        return value > money.value;
+    }
 }
