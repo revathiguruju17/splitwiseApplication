@@ -32,4 +32,16 @@ public class Transaction {
     public int hashCode() {
         return Objects.hash( fromFriend, toFriend, money );
     }
+
+    void setFromFriend(String fromFriend) {
+        this.fromFriend = fromFriend;
+    }
+
+    void setToFriend(String toFriend) {
+        this.toFriend = toFriend;
+    }
+
+    void setMoney(Money money) {
+        this.money = money;
+    }
 }

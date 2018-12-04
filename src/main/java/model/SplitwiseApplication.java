@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class SplitwiseApplication {
+
+    private List<Transaction> transactions = new ArrayList<>();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -18,43 +21,44 @@ public class SplitwiseApplication {
         return Objects.hash( transactions );
     }
 
-    private List<Transaction> transactions = new ArrayList<>();
-
     public List<Transaction> calculateTransactions(List<Friend> friends) {
         Money average = calculateAverage( friends );
         for (Friend fromFriend : friends) {
             Money money = fromFriend.getExpense();
-            boolean isSmaller = money.isLesser( average );
-            while (isSmaller) {
-                createTransaction( friends, fromFriend, average );
-                isSmaller = fromFriend.getExpense().isLesser( average );
+            boolean isLesser = money.isLesser( average );
+            while (isLesser) {
+                transactions.add( createTransaction( friends, fromFriend, average ) );
+                isLesser = fromFriend.getExpense().isLesser( average );
             }
         }
         return transactions;
     }
 
-    private void createTransaction(List<Friend> friends, Friend fromFriend, Money average) {
-        for (Friend toFriend : friends) {
-            Money money1 = toFriend.getExpense();
+    Transaction createTransaction(List<Friend> friends, Friend fromWhom, Money average) {
+        Transaction transaction = new Transaction( "", "", new Money( 0 ) );
+        String fromPerson = fromWhom.getName();
+        transaction.setFromFriend( fromPerson );
+        for (Friend toWhom : friends) {
+            Money money1 = toWhom.getExpense();
             boolean isGreater = money1.isGreater( average );
             if (isGreater) {
-                String fromPerson = fromFriend.getName();
-                String toPerson = toFriend.getName();
-                Money owedMoney = findOwedMoney( fromFriend.getExpense(), toFriend.getExpense(), average );
-                fromFriend.increaseExpense( owedMoney );
-                toFriend.decreaseExpense( owedMoney );
-                Transaction transaction = new Transaction( fromPerson, toPerson, owedMoney );
-                transactions.add( transaction );
+                String toPerson = toWhom.getName();
+                Money owedMoney = findOwedMoney( fromWhom.getExpense(), toWhom.getExpense(), average );
+                fromWhom.increaseExpense( owedMoney );
+                toWhom.decreaseExpense( owedMoney );
+                transaction.setToFriend( toPerson );
+                transaction.setMoney( owedMoney );
                 break;
             }
         }
+        return transaction;
     }
 
-    private Money findOwedMoney(Money from, Money to, Money average) {
-        Money money = average.subtract( from );
-        Money money1 = to.subtract( average );
-        boolean isMoney1Lesser = money1.isLesser( money );
-        if (isMoney1Lesser) {
+    Money findOwedMoney(Money from, Money to, Money average) {
+        Money owedMoney1 = average.subtract( from );
+        Money owedMoney2 = to.subtract( average );
+        boolean isOwedMoney1Greater = owedMoney1.isGreater( owedMoney2 );
+        if (isOwedMoney1Greater) {
             return to.subtract( average );
         }
         return average.subtract( from );

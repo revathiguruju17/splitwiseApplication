@@ -1,6 +1,7 @@
-package model;
+package controller;
 
-import controller.Trip;
+import model.Friend;
+import model.Money;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -12,19 +13,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class TripTest {
 
     @Test
-    void shouldReturnTrueIfFriendsListIsEmpty(){
+    void shouldReturnTrueIfFriendsListIsEmpty() {
         Trip trip = new Trip();
-        List<Friend> friends = new ArrayList<>(  );
+        List<Friend> friends = new ArrayList<>();
         boolean result = trip.isFriendsListEmpty( friends );
-        assertTrue(result);
+        assertTrue( result );
     }
 
     @Test
-    void shouldReturnFalseIfFriendsListIsNotEmpty(){
+    void shouldReturnFalseIfFriendsListIsNotEmpty() {
         Trip trip = new Trip();
-        List<Friend> friends = new ArrayList<>(  );
-        friends.add(new Friend( "A",new Money( 10 ) ));
+        List<Friend> friends = new ArrayList<>();
+        friends.add( new Friend( "A", new Money( 10 ) ) );
         boolean result = trip.isFriendsListEmpty( friends );
-        assertFalse(result);
+        assertFalse( result );
     }
 }

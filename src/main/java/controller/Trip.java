@@ -2,6 +2,8 @@ package controller;
 
 import model.Friend;
 import model.Money;
+import model.SplitwiseApplication;
+import model.Transaction;
 import view.InputDriver;
 import view.OutputDriver;
 
@@ -11,7 +13,17 @@ import java.util.List;
 public class Trip {
     private List<Friend> friends = new ArrayList<>();
 
-    List<Friend> friendsInTheTrip() {
+    void friendsInTheTrip() {
+        addFriendsToTheTrip();
+        if (isFriendsListEmpty( friends )) {
+            throw new IllegalArgumentException( "the friends list is empty" );
+        }
+        SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
+        List<Transaction> transactions = splitwiseApplication.calculateTransactions( friends );
+        displayTheTransactions( transactions );
+    }
+
+    void addFriendsToTheTrip() {
         OutputDriver.printMessage( "enter the number of friends in the trip" );
         int numberOfFriends = InputDriver.readInputAsInt();
         OutputDriver.printMessage( "enter the list of friends and their expenses" );
@@ -20,10 +32,15 @@ public class Trip {
             double moneySpent = InputDriver.readInputAsDouble();
             friends.add( new Friend( name, new Money( moneySpent ) ) );
         }
-        return friends;
     }
 
-    public boolean isFriendsListEmpty(List<Friend> friends){
+    private void displayTheTransactions(List<Transaction> transactions) {
+        for (Transaction transaction : transactions) {
+            OutputDriver.printMessage( transaction.toString() );
+        }
+    }
+
+    public boolean isFriendsListEmpty(List<Friend> friends) {
         return friends.isEmpty();
     }
 }
