@@ -52,4 +52,5 @@ class CalculationTest {
         Money expected = new Money( 109.33 );
         assertEquals( expected, actual );
     }
+
 }

@@ -9,27 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SplitwiseApplicationTest {
 
-    @Test
-    void shouldReturnMoneyToBePaidByDebtorWhenCreditorHas150RsAndAverageIs100rs() {
-        Money debtor = new Money( 20 );
-        Money creditor = new Money( 150 );
-        Money average = new Money( 100 );
-        SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        Money actual = splitwiseApplication.calculateTheMoneyToBeDebitedForCurrentTransaction( debtor, creditor, average );
-        Money expected = new Money( 50 );
-        assertEquals( actual, expected );
-    }
-
-    @Test
-    void shouldReturnMoneyToBePaidByDebtorWhenCreditorHas220RsAndAverageIs100rs() {
-        Money debtor = new Money( 20 );
-        Money creditor = new Money( 220 );
-        Money average = new Money( 100 );
-        SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        Money actual = splitwiseApplication.calculateTheMoneyToBeDebitedForCurrentTransaction( debtor, creditor, average );
-        Money expected = new Money( 80 );
-        assertEquals( actual, expected );
-    }
 
     @Test
     void shouldReturnZeroTransactionsWhenAllFriendsHaveZeroExpenses() {

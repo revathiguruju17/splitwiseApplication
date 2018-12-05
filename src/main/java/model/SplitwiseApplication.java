@@ -13,40 +13,10 @@ public class SplitwiseApplication {
             Money money = debtor.getExpense();
             boolean isLesser = money.isLesser( averageExpenditure );
             while (isLesser) {
-                transactions.add( createTransaction( friends, debtor, averageExpenditure ) );
+                transactions.add( Transaction.createTransaction( friends, debtor, averageExpenditure ) );
                 isLesser = debtor.getExpense().isLesser( averageExpenditure );
             }
         }
         return transactions;
     }
-
-    Transaction createTransaction(List<Friend> friends, Friend debtor, Money average) {
-        Transaction transaction = new Transaction( "", "", new Money( 0 ) );
-        String debtorName = debtor.getName();
-        transaction.setDebtor( debtorName );
-        for (Friend creditor : friends) {
-            Money creditorExpense = creditor.getExpense();
-            boolean isGreater = creditorExpense.isGreater( average );
-            if (isGreater) {
-                String creditorName = creditor.getName();
-                Money debitableAmountForCurrentTransaction = calculateTheMoneyToBeDebitedForCurrentTransaction( debtor.getExpense(), creditor.getExpense(), average );
-                debtor.increaseExpense( debitableAmountForCurrentTransaction );
-                creditor.decreaseExpense( debitableAmountForCurrentTransaction );
-                transaction.setCreditor( creditorName );
-                transaction.setPayableAmount( debitableAmountForCurrentTransaction );
-                break;
-            }
-        }
-        return transaction;
-    }
-
-    Money calculateTheMoneyToBeDebitedForCurrentTransaction(Money expenseOfSender, Money expenseOfReceiver, Money average) {
-        Money totalDebitableAmount = average.subtract( expenseOfSender );
-        Money totalCreditableAmount = expenseOfReceiver.subtract( average );
-        if (totalDebitableAmount.isGreater( totalCreditableAmount )) {
-            return totalCreditableAmount;
-        }
-        return totalDebitableAmount;
-    }
-
 }
