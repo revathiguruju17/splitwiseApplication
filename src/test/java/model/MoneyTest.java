@@ -73,7 +73,7 @@ class MoneyTest {
     void shouldReturnTrueIf_10_LesserThan30(){
         Money money = new Money( 10 );
         Money money1 = new Money( 30 );
-        boolean isLesser = money.isGreater( money1 );
+        boolean isLesser = money.isLesser( money1 );
         assertTrue(isLesser);
     }
 
@@ -81,7 +81,7 @@ class MoneyTest {
     void shouldReturnFalseIf_58_GreaterThan_30(){
         Money money = new Money( 58 );
         Money money1 = new Money( 30 );
-        boolean isLesser = money.isGreater( money1);
+        boolean isLesser = money.isLesser( money1);
         assertFalse(isLesser);
     }
 

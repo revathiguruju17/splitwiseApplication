@@ -10,7 +10,7 @@ import view.OutputDriver;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Trip {
+class Trip {
     private List<Friend> friends = new ArrayList<>();
 
     void friendsInTheTrip() {
@@ -19,11 +19,11 @@ public class Trip {
             throw new IllegalArgumentException( "the friends list is empty" );
         }
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        List<Transaction> transactions = splitwiseApplication.calculateTransactions( friends );
+        List<Transaction> transactions = splitwiseApplication.settleTheExpenses( friends );
         displayTheTransactions( transactions );
     }
 
-    void addFriendsToTheTrip() {
+    private void addFriendsToTheTrip() {
         OutputDriver.printMessage( "enter the number of friends in the trip" );
         int numberOfFriends = InputDriver.readInputAsInt();
         OutputDriver.printMessage( "enter the list of friends and their expenses" );
@@ -40,7 +40,7 @@ public class Trip {
         }
     }
 
-    public boolean isFriendsListEmpty(List<Friend> friends) {
+    boolean isFriendsListEmpty(List<Friend> friends) {
         return friends.isEmpty();
     }
 }

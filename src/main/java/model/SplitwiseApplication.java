@@ -7,8 +7,8 @@ public class SplitwiseApplication {
 
     private List<Transaction> transactions = new ArrayList<>();
 
-    public List<Transaction> calculateTransactions(List<Friend> friends) {
-        Money averageExpenditure = calculateAverageExpenditure( friends );
+    public List<Transaction> settleTheExpenses(List<Friend> friends) {
+        Money averageExpenditure = Calculation.AverageCalculation( friends );
         for (Friend debtor : friends) {
             Money money = debtor.getExpense();
             boolean isLesser = money.isLesser( averageExpenditure );
@@ -49,14 +49,4 @@ public class SplitwiseApplication {
         return totalDebitableAmount;
     }
 
-    Money calculateAverageExpenditure(List<Friend> friends) {
-        Money totalExpense = new Money( 0 );
-        Money average;
-        for (Friend friend : friends) {
-            Money money = friend.getExpense();
-            totalExpense = totalExpense.add( money );
-        }
-        average = totalExpense.divide( new Money( friends.size() ) );
-        return average;
-    }
 }
