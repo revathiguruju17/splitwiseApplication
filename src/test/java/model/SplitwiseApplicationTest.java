@@ -16,7 +16,7 @@ class SplitwiseApplicationTest {
         friends.add( new Friend( "B", new Money( 0 ) ) );
         friends.add( new Friend( "C", new Money( 0 ) ) );
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        Money actual = splitwiseApplication.calculateAverage( friends );
+        Money actual = splitwiseApplication.calculateAverageExpenditure( friends );
         Money expected = new Money( 0 );
         assertEquals( expected, actual );
     }
@@ -29,7 +29,7 @@ class SplitwiseApplicationTest {
         friends.add( new Friend( "C", new Money( -89 ) ) );
         friends.add( new Friend( "D", new Money( 50 ) ) );
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        assertThrows( IllegalArgumentException.class, () -> splitwiseApplication.calculateAverage( friends ) );
+        assertThrows( IllegalArgumentException.class, () -> splitwiseApplication.calculateAverageExpenditure( friends ) );
     }
 
     @Test
@@ -40,7 +40,7 @@ class SplitwiseApplicationTest {
         friends.add( new Friend( "C", new Money( 100 ) ) );
         friends.add( new Friend( "D", new Money( 200 ) ) );
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        Money actual = splitwiseApplication.calculateAverage( friends );
+        Money actual = splitwiseApplication.calculateAverageExpenditure( friends );
         Money expected = new Money( 110 );
         assertEquals( expected, actual );
     }
@@ -52,7 +52,7 @@ class SplitwiseApplicationTest {
         friends.add( new Friend( "B", new Money( 158 ) ) );
         friends.add( new Friend( "C", new Money( 69 ) ) );
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        Money actual = splitwiseApplication.calculateAverage( friends );
+        Money actual = splitwiseApplication.calculateAverageExpenditure( friends );
         Money expected = new Money( 109.33 );
         assertEquals( expected, actual );
     }
@@ -63,7 +63,7 @@ class SplitwiseApplicationTest {
         Money creditor = new Money( 150 );
         Money average = new Money( 100 );
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        Money actual = splitwiseApplication.findOwedMoney( debtor, creditor, average );
+        Money actual = splitwiseApplication.calculateTheMoneyToBeDebitedForCurrentTransaction( debtor, creditor, average );
         Money expected = new Money( 50 );
         assertEquals( actual, expected );
     }
@@ -74,22 +74,22 @@ class SplitwiseApplicationTest {
         Money creditor = new Money( 220 );
         Money average = new Money( 100 );
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        Money actual = splitwiseApplication.findOwedMoney( debtor, creditor, average );
+        Money actual = splitwiseApplication.calculateTheMoneyToBeDebitedForCurrentTransaction( debtor, creditor, average );
         Money expected = new Money( 80 );
         assertEquals( actual, expected );
     }
 
     @Test
-    void shouldCreateTransactionWhenAFriendHavingMoneyLessThanAverageMoney(){
-        List<Friend> friends = new ArrayList<>(  );
-        friends.add( new Friend( "A",new Money( 20 ) ) );
+    void shouldCreateTransactionWhenAFriendHavingMoneyLessThanAverageMoney() {
+        List<Friend> friends = new ArrayList<>();
+        friends.add( new Friend( "A", new Money( 20 ) ) );
         friends.add( new Friend( "B", new Money( 36 ) ) );
         friends.add( new Friend( "C", new Money( 70 ) ) );
         SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        Money average = splitwiseApplication.calculateAverage( friends );
-        Transaction actual =splitwiseApplication.createTransaction( friends, friends.get( 0 ),average );
-        Transaction expected = new Transaction( "A","C" ,new Money( 22 ));
-        assertEquals( expected,actual );
+        Money average = splitwiseApplication.calculateAverageExpenditure( friends );
+        Transaction actual = splitwiseApplication.createTransaction( friends, friends.get( 0 ), average );
+        Transaction expected = new Transaction( "A", "C", new Money( 22 ) );
+        assertEquals( expected, actual );
     }
 
     @Test

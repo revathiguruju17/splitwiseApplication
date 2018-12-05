@@ -3,19 +3,19 @@ package model;
 import java.util.Objects;
 
 public class Transaction {
-    private String fromFriend;
-    private String toFriend;
-    private Money money;
+    private String debtor;
+    private String creditor;
+    private Money payableAmount;
 
-    Transaction(String fromFriend, String toFriend, Money money) {
-        this.fromFriend = fromFriend;
-        this.toFriend = toFriend;
-        this.money = money;
+    Transaction(String debtor, String creditor, Money payableAmount) {
+        this.debtor = debtor;
+        this.creditor = creditor;
+        this.payableAmount = payableAmount;
     }
 
     @Override
     public String toString() {
-        return fromFriend + "->" + toFriend + ", " + money.toString();
+        return debtor + "->" + creditor + ", " + payableAmount.toString();
     }
 
     @Override
@@ -23,25 +23,25 @@ public class Transaction {
         if (this == o) return true;
         if (!(o instanceof Transaction)) return false;
         Transaction that = (Transaction) o;
-        return Objects.equals( fromFriend, that.fromFriend ) &&
-                Objects.equals( toFriend, that.toFriend ) &&
-                Objects.equals( money, that.money );
+        return Objects.equals( debtor, that.debtor ) &&
+                Objects.equals( creditor, that.creditor ) &&
+                Objects.equals( payableAmount, that.payableAmount );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( fromFriend, toFriend, money );
+        return Objects.hash( debtor, creditor, payableAmount );
     }
 
-    void setFromFriend(String fromFriend) {
-        this.fromFriend = fromFriend;
+    void setDebtor(String debtor) {
+        this.debtor = debtor;
     }
 
-    void setToFriend(String toFriend) {
-        this.toFriend = toFriend;
+    void setCreditor(String toFriend) {
+        this.creditor = toFriend;
     }
 
-    void setMoney(Money money) {
-        this.money = money;
+    void setPayableAmount(Money payableAmount) {
+        this.payableAmount = payableAmount;
     }
 }
