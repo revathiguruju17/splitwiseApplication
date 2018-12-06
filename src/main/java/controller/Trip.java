@@ -2,7 +2,7 @@ package controller;
 
 import model.Friend;
 import model.Money;
-import model.SplitwiseApplication;
+import model.Spiltwise;
 import model.Transaction;
 import view.InputDriver;
 import view.OutputDriver;
@@ -18,8 +18,8 @@ class Trip {
         if (isFriendsListEmpty( friends )) {
             throw new IllegalArgumentException( "the friends list is empty" );
         }
-        SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        List<Transaction> transactions = splitwiseApplication.settleTheExpenses( friends );
+        Spiltwise spiltwise = new Spiltwise();
+        List<Transaction> transactions = spiltwise.settleTheExpenses( friends );
         displayTheTransactions( transactions );
     }
 

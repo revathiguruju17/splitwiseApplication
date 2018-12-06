@@ -26,7 +26,12 @@ class MoneyTest {
     }
 
     @Test
-    void shouldReturn90_for40plus50() throws IllegalArgumentException {
+    void shouldThrowAnExceptionForNegativeValues(){
+        assertThrows( IllegalArgumentException.class, ()-> new Money( -9 ));
+    }
+
+    @Test
+    void shouldReturn90_for40plus50() {
         Money money = new Money( 40 );
         Money money1 = new Money( 50 );
         Money result = new Money( 90 );
@@ -34,7 +39,7 @@ class MoneyTest {
     }
 
     @Test
-    void shouldReturn18_for50minus32() throws IllegalArgumentException {
+    void shouldReturn18_for50minus32()  {
         Money money = new Money( 50 );
         Money money1 = new Money( 32 );
         Money result = new Money( 18 );
@@ -42,24 +47,11 @@ class MoneyTest {
     }
 
     @Test
-    void should24_for72DividedBy3() throws IllegalArgumentException {
+    void should24_for72DividedBy3()  {
         Money money = new Money( 72 );
         Money money1 = new Money( 3 );
         Money result = new Money( 24 );
         assertEquals( money.divide( money1 ), result );
-    }
-
-    @Test
-    void shouldThrowExceptionWhenTheMoneyIsNegative() {
-        Money money = new Money( -90 );
-        assertThrows( IllegalArgumentException.class, money::checkForNegativeNumbers );
-    }
-
-    @Test
-    void shouldThrowExceptionWhenWeAddNegativeValue() {
-        Money money = new Money( -10 );
-        Money money1 = new Money( 90 );
-        assertThrows( IllegalArgumentException.class, () -> money.add( money1 ) );
     }
 
     @Test
@@ -100,4 +92,5 @@ class MoneyTest {
         boolean isGreater = money.isGreater( money1);
         assertFalse(isGreater);
     }
+
 }

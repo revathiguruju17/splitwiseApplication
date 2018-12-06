@@ -7,16 +7,15 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SplitwiseApplicationTest {
-
+class SpiltwiseTest {
 
     @Test
     void shouldReturnZeroTransactionsWhenAllFriendsHaveZeroExpenses() {
         List<Friend> friends = new ArrayList<>();
         friends.add( new Friend( "A", new Money( 0 ) ) );
         friends.add( new Friend( "B", new Money( 0 ) ) );
-        SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        List<Transaction> result = splitwiseApplication.settleTheExpenses( friends );
+        Spiltwise spiltwise = new Spiltwise();
+        List<Transaction> result = spiltwise.settleTheExpenses( friends );
         assertTrue( result.isEmpty() );
     }
 
@@ -26,8 +25,8 @@ class SplitwiseApplicationTest {
         friends.add( new Friend( "A", new Money( 100 ) ) );
         friends.add( new Friend( "B", new Money( 100 ) ) );
         friends.add( new Friend( "C", new Money( 100 ) ) );
-        SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        List<Transaction> result = splitwiseApplication.settleTheExpenses( friends );
+        Spiltwise spiltwise = new Spiltwise();
+        List<Transaction> result = spiltwise.settleTheExpenses( friends );
         assertTrue( result.isEmpty() );
     }
 
@@ -38,8 +37,8 @@ class SplitwiseApplicationTest {
         friends.add( new Friend( "B", new Money( 40 ) ) );
         friends.add( new Friend( "C", new Money( 100 ) ) );
         friends.add( new Friend( "D", new Money( 200 ) ) );
-        SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        List<Transaction> result = splitwiseApplication.settleTheExpenses( friends );
+        Spiltwise spiltwise = new Spiltwise();
+        List<Transaction> result = spiltwise.settleTheExpenses( friends );
         List<Transaction> expected = new ArrayList<>();
         expected.add( new Transaction( "A", "D", new Money( 10 ) ) );
         expected.add( new Transaction( "B", "D", new Money( 70 ) ) );
@@ -54,8 +53,8 @@ class SplitwiseApplicationTest {
         friends.add( new Friend( "B", new Money( 90 ) ) );
         friends.add( new Friend( "C", new Money( 40 ) ) );
         friends.add( new Friend( "D", new Money( 30 ) ) );
-        SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        List<Transaction> result = splitwiseApplication.settleTheExpenses( friends );
+        Spiltwise spiltwise = new Spiltwise();
+        List<Transaction> result = spiltwise.settleTheExpenses( friends );
         List<Transaction> expected = new ArrayList<>();
         expected.add( new Transaction( "C", "A", new Money( 40 ) ) );
         expected.add( new Transaction( "D", "A", new Money( 40 ) ) );
@@ -69,8 +68,8 @@ class SplitwiseApplicationTest {
         friends.add( new Friend( "A", new Money( 163 ) ) );
         friends.add( new Friend( "B", new Money( 300 ) ) );
         friends.add( new Friend( "C", new Money( 200 ) ) );
-        SplitwiseApplication splitwiseApplication = new SplitwiseApplication();
-        List<Transaction> result = splitwiseApplication.settleTheExpenses( friends );
+        Spiltwise spiltwise = new Spiltwise();
+        List<Transaction> result = spiltwise.settleTheExpenses( friends );
         List<Transaction> expected = new ArrayList<>();
         expected.add( new Transaction( "A", "B", new Money( 58 ) ) );
         expected.add( new Transaction( "C", "B", new Money( 21 ) ) );

@@ -2,8 +2,8 @@ package model;
 
 import java.util.List;
 
-class Calculation {
-    static Money AverageCalculation(List<Friend> friends) {
+class AverageCalculator {
+    static Money calculateAverage(List<Friend> friends) throws IllegalArgumentException {
         Money totalExpense = new Money( 0 );
         Money average;
         for (Friend friend : friends) {

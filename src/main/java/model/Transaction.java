@@ -66,7 +66,7 @@ public class Transaction {
         return transaction;
     }
 
-    static Money calculateTheMoneyToBeDebitedForCurrentTransaction(Money expenseOfSender, Money expenseOfReceiver, Money average) {
+    private static Money calculateTheMoneyToBeDebitedForCurrentTransaction(Money expenseOfSender, Money expenseOfReceiver, Money average) {
         Money totalDebitableAmount = average.subtract( expenseOfSender );
         Money totalCreditableAmount = expenseOfReceiver.subtract( average );
         if (totalDebitableAmount.isGreater( totalCreditableAmount )) {
