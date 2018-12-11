@@ -93,4 +93,21 @@ class MoneyTest {
         assertFalse(isGreater);
     }
 
+    @Test
+    void shouldRoundOffTheQuotientToTheNearestValueForDivisionOf_7_And_4(){
+        Money money = new Money( 7 );
+        Money money1 = new Money( 4 );
+        Money result = money.divide( money1 );
+        Money expected = new Money( 2 );
+        assertEquals(result,expected);
+    }
+
+    @Test
+    void shouldRoundOffTheQuotientToTheNearestValueForDivisionOf_5_And_4(){
+        Money money = new Money( 5 );
+        Money money1 = new Money( 4 );
+        Money result = money.divide( money1 );
+        Money expected = new Money( 1 );
+        assertEquals(result,expected);
+    }
 }

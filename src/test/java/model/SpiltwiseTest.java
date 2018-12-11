@@ -75,13 +75,13 @@ class SpiltwiseTest {
     }
 
     @Test
-    void shouldCalculateCorrectTransactionsForTheFriendsHavingExpenses163Rs_300Rs_200Rs() {
-        friends.add( new Friend( "A", new Money( 163 ) ) );
+    void shouldCalculateCorrectTransactionsForTheFriendsHavingExpenses164Rs_300Rs_200Rs() {
+        friends.add( new Friend( "A", new Money( 164 ) ) );
         friends.add( new Friend( "B", new Money( 300 ) ) );
         friends.add( new Friend( "C", new Money( 200 ) ) );
         List<Transaction> result = spiltwise.settleTheExpenses( friends );
         List<Transaction> expected = new ArrayList<>();
-        expected.add( new Transaction( "A", "B", new Money( 58 ) ) );
+        expected.add( new Transaction( "A", "B", new Money( 57 ) ) );
         expected.add( new Transaction( "C", "B", new Money( 21 ) ) );
         assertEquals( result, expected );
     }

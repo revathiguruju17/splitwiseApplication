@@ -40,9 +40,9 @@ public class Money {
     }
 
     Money divide(Money money) {
-        Money result = new Money( 0 );
-        result.value = (value / money.value);
-        return result;
+        double result;
+        result= (float)value / money.value;
+        return new Money( (int)Math.round( result ) );
     }
 
     private void checkForNegativeNumbers() {
