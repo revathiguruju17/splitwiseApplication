@@ -3,9 +3,9 @@ package model;
 import java.util.Objects;
 
 public class Money {
-    private double value;
+    private int value;
 
-    public Money(double value) {
+    public Money(int value) {
         this.value = value;
         checkForNegativeNumbers();
     }
@@ -42,7 +42,6 @@ public class Money {
     Money divide(Money money) {
         Money result = new Money( 0 );
         result.value = (value / money.value);
-        result.value = Math.round( result.value * 100.0 ) / 100.0;
         return result;
     }
 

@@ -39,7 +39,7 @@ class TransactionTest {
         friends.add( new Friend( "D", new Money( 200 ) ) );
         Money averageExpenditure = AverageCalculator.calculateAverage( friends );
         Transaction transaction = new Transaction( "","",new Money( 0 ) );
-        Transaction actual = transaction.createTransaction( friends, friends.get( 0 ), averageExpenditure );
+        Transaction actual = transaction.create( friends, friends.get( 0 ), averageExpenditure );
         Transaction expected = new Transaction( "A", "D", new Money( 10 ) );
         assertEquals( actual, expected );
     }

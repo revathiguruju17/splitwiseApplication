@@ -40,7 +40,7 @@ class AverageCalculatorTest {
         friends.add( new Friend( "B", new Money( 158 ) ) );
         friends.add( new Friend( "C", new Money( 69 ) ) );
         Money actual = AverageCalculator.calculateAverage( friends );
-        Money expected = new Money( 109.33 );
+        Money expected = new Money( 109 );
         assertEquals( expected, actual );
     }
 

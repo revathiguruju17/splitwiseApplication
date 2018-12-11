@@ -10,11 +10,11 @@ public class Spiltwise {
     public List<Transaction> settleTheExpenses(List<Friend> friends) {
         Money averageExpenditure = AverageCalculator.calculateAverage( friends );
         for (Friend debtor : friends) {
-            Money money = debtor.getExpense();
-            boolean isLesser = money.isLesser( averageExpenditure );
+            Money debtorExpense = debtor.getExpense();
+            boolean isLesser = debtorExpense.isLesser( averageExpenditure );
             while (isLesser) {
                 Transaction transaction = new Transaction( "", "", new Money( 0 ) );
-                transactions.add( transaction.createTransaction( friends, debtor, averageExpenditure ) );
+                transactions.add( transaction.create( friends, debtor, averageExpenditure ) );
                 isLesser = debtor.getExpense().isLesser( averageExpenditure );
             }
         }

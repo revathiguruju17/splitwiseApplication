@@ -46,19 +46,17 @@ public class Transaction {
         this.payableAmount = payableAmount;
     }
 
-    Transaction createTransaction(List<Friend> friends, Friend debtor, Money average) {
-        String debtorName = debtor.getName();
-        this.setDebtor( debtorName );
+    Transaction create(List<Friend> friends, Friend debtor, Money average) {
+        this.setDebtor( debtor.getName() );
         for (Friend creditor : friends) {
             Money creditorExpense = creditor.getExpense();
             boolean isGreater = creditorExpense.isGreater( average );
             if (isGreater) {
-                String creditorName = creditor.getName();
                 Money debitableAmountForCurrentTransaction = calculateTheMoneyToBeDebitedForCurrentTransaction
                         ( debtor.getExpense(), creditor.getExpense(), average );
                 debtor.increaseExpense( debitableAmountForCurrentTransaction );
                 creditor.decreaseExpense( debitableAmountForCurrentTransaction );
-                this.setCreditor( creditorName );
+                this.setCreditor( creditor.getName() );
                 this.setPayableAmount( debitableAmountForCurrentTransaction );
                 break;
             }

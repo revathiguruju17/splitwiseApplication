@@ -29,7 +29,7 @@ class Trip {
         OutputDriver.printMessage( "enter the list of friends and their expenses" );
         for (int i = 0; i < numberOfFriends; i++) {
             String name = InputDriver.readInputAsString();
-            double moneySpent = InputDriver.readInputAsDouble();
+            int moneySpent = InputDriver.readInputAsInt();
             friends.add( new Friend( name, new Money( moneySpent ) ) );
         }
     }

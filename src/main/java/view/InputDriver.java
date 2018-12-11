@@ -10,10 +10,6 @@ public class InputDriver {
         return scanner.nextInt();
     }
 
-    public static double readInputAsDouble(){
-        return scanner.nextDouble();
-    }
-
     public static String readInputAsString(){
         return scanner.next();
     }
