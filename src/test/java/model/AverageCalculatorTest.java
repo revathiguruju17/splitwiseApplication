@@ -8,6 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AverageCalculatorTest {
+
     @Test
     void shouldReturnZeroAsAverageMoneyWhenEachFriendHavingAnExpenseZero() {
         List<Friend> friends = new ArrayList<>();
@@ -26,6 +27,7 @@ class AverageCalculatorTest {
         friends.add( new Friend( "B", new Money( 40 ) ) );
         friends.add( new Friend( "C", new Money( 100 ) ) );
         friends.add( new Friend( "D", new Money( 200 ) ) );
+        AverageCalculator.calculateAverage( friends );
         Money actual = AverageCalculator.calculateAverage( friends );
         Money expected = new Money( 110 );
         assertEquals( expected, actual );

@@ -13,7 +13,8 @@ public class Spiltwise {
             Money money = debtor.getExpense();
             boolean isLesser = money.isLesser( averageExpenditure );
             while (isLesser) {
-                transactions.add( Transaction.createTransaction( friends, debtor, averageExpenditure ) );
+                Transaction transaction = new Transaction( "", "", new Money( 0 ) );
+                transactions.add( transaction.createTransaction( friends, debtor, averageExpenditure ) );
                 isLesser = debtor.getExpense().isLesser( averageExpenditure );
             }
         }

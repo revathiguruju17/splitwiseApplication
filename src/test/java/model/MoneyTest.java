@@ -50,8 +50,8 @@ class MoneyTest {
     void should24_for72DividedBy3()  {
         Money money = new Money( 72 );
         Money money1 = new Money( 3 );
-        Money result = new Money( 24 );
-        assertEquals( money.divide( money1 ), result );
+        Money expected = new Money( 24 );
+        assertEquals( money.divide( money1 ), expected );
     }
 
     @Test

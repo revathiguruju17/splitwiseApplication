@@ -28,22 +28,27 @@ public class Money {
     }
 
     Money add(Money money) {
-        return new Money( this.value + money.value );
+        Money result = new Money( 0 );
+        result.value = value + money.value;
+        return result;
     }
 
     Money subtract(Money money) {
-        return new Money( value - money.value );
+        Money result = new Money( 0 );
+        result.value = value - money.value;
+        return result;
     }
 
     Money divide(Money money) {
-        Money result = new Money( value / money.value );
+        Money result = new Money( 0 );
+        result.value = (value / money.value);
         result.value = Math.round( result.value * 100.0 ) / 100.0;
         return result;
     }
 
-    private void checkForNegativeNumbers()  {
+    private void checkForNegativeNumbers() {
         if (value < 0) {
-            throw new IllegalArgumentException( "model.Money should not be negative. Enter valid money" );
+            throw new IllegalArgumentException( "Money should not be negative. Enter valid money" );
         }
     }
 
