@@ -14,43 +14,39 @@ class Trip {
 
     List<Friend> getFriends() {
         OutputDriver.printMessage( "enter the number of friends in the trip" );
-        int numberOfFriends = getNumberOfFriends();
+        int numberOfFriends = getValidInteger();
         OutputDriver.printMessage( "enter the name and expense of all the friends" );
         for (int i = 0; i < numberOfFriends; i++) {
-            String name = getFriendName();
-            int expense = getExpense();
+            String name = getValidString();
+            int expense = getValidInteger();
             friends.add( new Friend( name, new Money( expense ) ) );
         }
         return friends;
     }
 
-    private int getNumberOfFriends() {
-        return Integer.parseInt( InputDriver.readInput() );
-    }
-
-    private int getExpense() {
-        String expense ="";
-        boolean numeric = true;
+    private int getValidInteger() {
+        String value = "";
+        boolean isString = true;
         Pattern pattern = Pattern.compile( ".*[^0-9].*" );
-        while (numeric){
-            expense = InputDriver.readInput();
-            numeric = pattern.matcher( expense ).matches();
-            if(numeric){
-                System.out.println("please enter valid amount");
+        while (isString) {
+            value = InputDriver.readInput();
+            isString = pattern.matcher( value ).matches();
+            if (isString) {
+                OutputDriver.printMessage( "please enter valid number" );
             }
         }
-        return Integer.parseInt( expense );
+        return Integer.parseInt( value );
     }
 
-    private String getFriendName() {
+    private String getValidString() {
         String name = "";
-        boolean numeric = true;
+        boolean isNumeric = true;
         Pattern pattern = Pattern.compile( ".*[^a-z][^A-Z].*" );
-        while (numeric) {
+        while (isNumeric) {
             name = InputDriver.readInput();
-            numeric = pattern.matcher( name ).matches();
-            if (numeric) {
-                System.out.println( "please enter a valid name" );
+            isNumeric = pattern.matcher( name ).matches();
+            if (isNumeric) {
+                OutputDriver.printMessage( "please enter a valid name" );
             }
         }
         return name;
