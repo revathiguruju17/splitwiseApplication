@@ -25,31 +25,38 @@ class Trip {
     }
 
     private int getValidInteger() {
-        String value = "";
-        boolean isString = true;
-        Pattern pattern = Pattern.compile( ".*[^0-9].*" );
-        while (isString) {
-            value = InputDriver.readInput();
-            isString = pattern.matcher( value ).matches();
-            if (isString) {
-                OutputDriver.printMessage( "please enter valid number" );
-            }
+        String value = InputDriver.readInput();
+        while (isString( value )) {
+            value = askAgainForValue();
         }
         return Integer.parseInt( value );
     }
 
+    private boolean isString(String string) {
+        Pattern pattern = Pattern.compile( ".*[^0-9].*" );
+        return pattern.matcher( string ).matches();
+    }
+
+    private String askAgainForValue() {
+        OutputDriver.printMessage( "Please enter a valid number" );
+        return InputDriver.readInput();
+    }
+
     private String getValidString() {
-        String name = "";
-        boolean isNumeric = true;
-        Pattern pattern = Pattern.compile( ".*[^a-z][^A-Z].*" );
-        while (isNumeric) {
-            name = InputDriver.readInput();
-            isNumeric = pattern.matcher( name ).matches();
-            if (isNumeric) {
-                OutputDriver.printMessage( "please enter a valid name" );
-            }
+        String name = InputDriver.readInput();
+        while (isInteger( name )) {
+            name = askAgainForName();
         }
         return name;
     }
 
+    private boolean isInteger(String string) {
+        Pattern pattern = Pattern.compile( ".*[^a-z][^A-Z].*" );
+        return pattern.matcher( string ).matches();
+    }
+
+    private String askAgainForName() {
+        OutputDriver.printMessage( "Please enter a valid name" );
+        return InputDriver.readInput();
+    }
 }
