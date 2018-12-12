@@ -11,9 +11,6 @@ public class ApplicationDriver {
     public static void main(String[] args) {
         Trip trip = new Trip();
         List<Friend> friends = trip.getFriends();
-        if (trip.isFriendsListEmpty( friends )) {
-            throw new IllegalArgumentException( "the friends list is empty" );
-        }
         Spiltwise spiltwise = new Spiltwise();
         List<Transaction> transactions = spiltwise.settleTheExpenses( friends );
         displayTheTransactions( transactions );
@@ -24,7 +21,7 @@ public class ApplicationDriver {
             String debtor = transaction.getDebtor();
             String creditor = transaction.getCreditor();
             int payableAmount = transaction.getPayableAmount();
-            OutputDriver.printMessage( debtor + "->" + creditor + ", " + payableAmount );
+            OutputDriver.printMessage( debtor + " -> " + creditor + " , " + payableAmount );
         }
     }
 

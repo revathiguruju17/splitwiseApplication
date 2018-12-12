@@ -25,6 +25,18 @@ public class Transaction {
         this.payableAmount = payableAmount;
     }
 
+    public String getDebtor() {
+        return debtor;
+    }
+
+    public String getCreditor() {
+        return creditor;
+    }
+
+    public int getPayableAmount() {
+        return payableAmount.getValue();
+    }
+
     Transaction create(List<Friend> friends, Friend debtor, Money average) {
         this.setDebtor( debtor.getName() );
         for (Friend creditor : friends) {
@@ -51,17 +63,5 @@ public class Transaction {
             return totalCreditableAmount;
         }
         return totalDebitableAmount;
-    }
-
-    public String getDebtor() {
-        return debtor;
-    }
-
-    public String getCreditor() {
-        return creditor;
-    }
-
-    public int getPayableAmount() {
-        return payableAmount.getValue();
     }
 }

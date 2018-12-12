@@ -40,10 +40,10 @@ class SpiltwiseTest {
     void shouldReturnCorrectTransactionsForTheFriendsHavingExpensesOf100RsAnd200Rs() {
         friends.add( new Friend( "A", new Money( 100 ) ) );
         friends.add( new Friend( "B", new Money( 200 ) ) );
-        List<Transaction> actual = spiltwise.settleTheExpenses( friends );
-        assertEquals( actual.get( 0 ).getDebtor(),"A" );
-        assertEquals( actual.get( 0 ).getCreditor(),"B" );
-        assertEquals( actual.get( 0 ).getPayableAmount(),50 );
+        List<Transaction> result = spiltwise.settleTheExpenses( friends );
+        assertEquals( result.get( 0 ).getDebtor(), "A" );
+        assertEquals( result.get( 0 ).getCreditor(), "B" );
+        assertEquals( result.get( 0 ).getPayableAmount(), 50 );
     }
 
     @Test
@@ -52,16 +52,16 @@ class SpiltwiseTest {
         friends.add( new Friend( "B", new Money( 40 ) ) );
         friends.add( new Friend( "C", new Money( 100 ) ) );
         friends.add( new Friend( "D", new Money( 200 ) ) );
-        List<Transaction> actual = spiltwise.settleTheExpenses( friends );
-        assertEquals( actual.get( 0 ).getDebtor(),"A" );
-        assertEquals( actual.get( 0 ).getCreditor(),"D" );
-        assertEquals( actual.get( 0 ).getPayableAmount(),10 );
-        assertEquals( actual.get( 1 ).getDebtor(),"B" );
-        assertEquals( actual.get( 1 ).getCreditor(),"D" );
-        assertEquals( actual.get( 1 ).getPayableAmount(),70 );
-        assertEquals( actual.get( 2 ).getDebtor(),"C" );
-        assertEquals( actual.get( 2 ).getCreditor(),"D" );
-        assertEquals( actual.get( 2 ).getPayableAmount(),10 );
+        List<Transaction> result = spiltwise.settleTheExpenses( friends );
+        assertEquals( result.get( 0 ).getDebtor(), "A" );
+        assertEquals( result.get( 0 ).getCreditor(), "D" );
+        assertEquals( result.get( 0 ).getPayableAmount(), 10 );
+        assertEquals( result.get( 1 ).getDebtor(), "B" );
+        assertEquals( result.get( 1 ).getCreditor(), "D" );
+        assertEquals( result.get( 1 ).getPayableAmount(), 70 );
+        assertEquals( result.get( 2 ).getDebtor(), "C" );
+        assertEquals( result.get( 2 ).getCreditor(), "D" );
+        assertEquals( result.get( 2 ).getPayableAmount(), 10 );
     }
 
     @Test
@@ -70,16 +70,16 @@ class SpiltwiseTest {
         friends.add( new Friend( "B", new Money( 90 ) ) );
         friends.add( new Friend( "C", new Money( 40 ) ) );
         friends.add( new Friend( "D", new Money( 30 ) ) );
-        List<Transaction> actual = spiltwise.settleTheExpenses( friends );
-        assertEquals( actual.get( 0 ).getDebtor(),"C" );
-        assertEquals( actual.get( 0 ).getCreditor(),"A" );
-        assertEquals( actual.get( 0 ).getPayableAmount(),40 );
-        assertEquals( actual.get( 1 ).getDebtor(),"D" );
-        assertEquals( actual.get( 1 ).getCreditor(),"A" );
-        assertEquals( actual.get( 1 ).getPayableAmount(),40 );
-        assertEquals( actual.get( 2 ).getDebtor(),"D" );
-        assertEquals( actual.get( 2 ).getCreditor(),"B" );
-        assertEquals( actual.get( 2 ).getPayableAmount(),10 );
+        List<Transaction> result = spiltwise.settleTheExpenses( friends );
+        assertEquals( result.get( 0 ).getDebtor(), "C" );
+        assertEquals( result.get( 0 ).getCreditor(), "A" );
+        assertEquals( result.get( 0 ).getPayableAmount(), 40 );
+        assertEquals( result.get( 1 ).getDebtor(), "D" );
+        assertEquals( result.get( 1 ).getCreditor(), "A" );
+        assertEquals( result.get( 1 ).getPayableAmount(), 40 );
+        assertEquals( result.get( 2 ).getDebtor(), "D" );
+        assertEquals( result.get( 2 ).getCreditor(), "B" );
+        assertEquals( result.get( 2 ).getPayableAmount(), 10 );
     }
 
     @Test
@@ -87,12 +87,12 @@ class SpiltwiseTest {
         friends.add( new Friend( "A", new Money( 164 ) ) );
         friends.add( new Friend( "B", new Money( 300 ) ) );
         friends.add( new Friend( "C", new Money( 200 ) ) );
-        List<Transaction> actual = spiltwise.settleTheExpenses( friends );
-        assertEquals( actual.get( 0 ).getDebtor(),"A" );
-        assertEquals( actual.get( 0 ).getCreditor(),"B" );
-        assertEquals( actual.get( 0 ).getPayableAmount(),57 );
-        assertEquals( actual.get( 1 ).getDebtor(),"C" );
-        assertEquals( actual.get( 1 ).getCreditor(),"B" );
-        assertEquals( actual.get( 1 ).getPayableAmount(),21 );
+        List<Transaction> result = spiltwise.settleTheExpenses( friends );
+        assertEquals( result.get( 0 ).getDebtor(), "A" );
+        assertEquals( result.get( 0 ).getCreditor(), "B" );
+        assertEquals( result.get( 0 ).getPayableAmount(), 57 );
+        assertEquals( result.get( 1 ).getDebtor(), "C" );
+        assertEquals( result.get( 1 ).getCreditor(), "B" );
+        assertEquals( result.get( 1 ).getPayableAmount(), 21 );
     }
 }

@@ -8,7 +8,7 @@ public class Money {
         this.value = value;
     }
 
-    public int getValue() {
+    int getValue() {
         return value;
     }
 
@@ -26,8 +26,8 @@ public class Money {
 
     Money divide(Money money) {
         double result;
-        result= (float)value / money.value;
-        return new Money( (int)Math.round( result ) );
+        result = (float) value / money.value;
+        return new Money( (int) Math.round( result ) );
     }
 
     boolean isLesser(Money money) {

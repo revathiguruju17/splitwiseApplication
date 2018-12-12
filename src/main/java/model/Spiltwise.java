@@ -8,7 +8,7 @@ public class Spiltwise {
     private List<Transaction> transactions = new ArrayList<>();
 
     public List<Transaction> settleTheExpenses(List<Friend> friends) {
-        Money averageExpenditure = calculateAverage( friends );
+        Money averageExpenditure = calculateAverageOfAllTheExpenses( friends );
         for (Friend debtor : friends) {
             Money debtorExpense = debtor.getExpense();
             boolean isLesser = debtorExpense.isLesser( averageExpenditure );
@@ -21,7 +21,7 @@ public class Spiltwise {
         return transactions;
     }
 
-    private Money calculateAverage(List<Friend> friends)  {
+    private Money calculateAverageOfAllTheExpenses(List<Friend> friends)  {
         Money totalExpense = new Money( 0 );
         Money average;
         for (Friend friend : friends) {
