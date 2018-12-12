@@ -41,9 +41,9 @@ class SpiltwiseTest {
         friends.add( new Friend( "A", new Money( 100 ) ) );
         friends.add( new Friend( "B", new Money( 200 ) ) );
         List<Transaction> actual = spiltwise.settleTheExpenses( friends );
-        List<Transaction> expected = new ArrayList<>();
-        expected.add( new Transaction( "A", "B", new Money( 50 ) ) );
-        assertEquals( expected, actual );
+        assertEquals( actual.get( 0 ).getDebtor(),"A" );
+        assertEquals( actual.get( 0 ).getCreditor(),"B" );
+        assertEquals( actual.get( 0 ).getPayableAmount(),50 );
     }
 
     @Test
@@ -52,12 +52,16 @@ class SpiltwiseTest {
         friends.add( new Friend( "B", new Money( 40 ) ) );
         friends.add( new Friend( "C", new Money( 100 ) ) );
         friends.add( new Friend( "D", new Money( 200 ) ) );
-        List<Transaction> result = spiltwise.settleTheExpenses( friends );
-        List<Transaction> expected = new ArrayList<>();
-        expected.add( new Transaction( "A", "D", new Money( 10 ) ) );
-        expected.add( new Transaction( "B", "D", new Money( 70 ) ) );
-        expected.add( new Transaction( "C", "D", new Money( 10 ) ) );
-        assertEquals( result, expected );
+        List<Transaction> actual = spiltwise.settleTheExpenses( friends );
+        assertEquals( actual.get( 0 ).getDebtor(),"A" );
+        assertEquals( actual.get( 0 ).getCreditor(),"D" );
+        assertEquals( actual.get( 0 ).getPayableAmount(),10 );
+        assertEquals( actual.get( 1 ).getDebtor(),"B" );
+        assertEquals( actual.get( 1 ).getCreditor(),"D" );
+        assertEquals( actual.get( 1 ).getPayableAmount(),70 );
+        assertEquals( actual.get( 2 ).getDebtor(),"C" );
+        assertEquals( actual.get( 2 ).getCreditor(),"D" );
+        assertEquals( actual.get( 2 ).getPayableAmount(),10 );
     }
 
     @Test
@@ -66,12 +70,16 @@ class SpiltwiseTest {
         friends.add( new Friend( "B", new Money( 90 ) ) );
         friends.add( new Friend( "C", new Money( 40 ) ) );
         friends.add( new Friend( "D", new Money( 30 ) ) );
-        List<Transaction> result = spiltwise.settleTheExpenses( friends );
-        List<Transaction> expected = new ArrayList<>();
-        expected.add( new Transaction( "C", "A", new Money( 40 ) ) );
-        expected.add( new Transaction( "D", "A", new Money( 40 ) ) );
-        expected.add( new Transaction( "D", "B", new Money( 10 ) ) );
-        assertEquals( result, expected );
+        List<Transaction> actual = spiltwise.settleTheExpenses( friends );
+        assertEquals( actual.get( 0 ).getDebtor(),"C" );
+        assertEquals( actual.get( 0 ).getCreditor(),"A" );
+        assertEquals( actual.get( 0 ).getPayableAmount(),40 );
+        assertEquals( actual.get( 1 ).getDebtor(),"D" );
+        assertEquals( actual.get( 1 ).getCreditor(),"A" );
+        assertEquals( actual.get( 1 ).getPayableAmount(),40 );
+        assertEquals( actual.get( 2 ).getDebtor(),"D" );
+        assertEquals( actual.get( 2 ).getCreditor(),"B" );
+        assertEquals( actual.get( 2 ).getPayableAmount(),10 );
     }
 
     @Test
@@ -79,10 +87,12 @@ class SpiltwiseTest {
         friends.add( new Friend( "A", new Money( 164 ) ) );
         friends.add( new Friend( "B", new Money( 300 ) ) );
         friends.add( new Friend( "C", new Money( 200 ) ) );
-        List<Transaction> result = spiltwise.settleTheExpenses( friends );
-        List<Transaction> expected = new ArrayList<>();
-        expected.add( new Transaction( "A", "B", new Money( 57 ) ) );
-        expected.add( new Transaction( "C", "B", new Money( 21 ) ) );
-        assertEquals( result, expected );
+        List<Transaction> actual = spiltwise.settleTheExpenses( friends );
+        assertEquals( actual.get( 0 ).getDebtor(),"A" );
+        assertEquals( actual.get( 0 ).getCreditor(),"B" );
+        assertEquals( actual.get( 0 ).getPayableAmount(),57 );
+        assertEquals( actual.get( 1 ).getDebtor(),"C" );
+        assertEquals( actual.get( 1 ).getCreditor(),"B" );
+        assertEquals( actual.get( 1 ).getPayableAmount(),21 );
     }
 }

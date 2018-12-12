@@ -1,30 +1,15 @@
 package model;
 
-import java.util.Objects;
-
 public class Money {
+
     private int value;
 
     public Money(int value) {
         this.value = value;
-        checkForNegativeNumbers();
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj.getClass() != this.getClass()) return false;
-        Money money = (Money) obj;
-        return value == money.value;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash( value );
-    }
-
-    @Override
-    public String toString() {
-        return Double.toString( value );
+    public int getValue() {
+        return value;
     }
 
     Money add(Money money) {
@@ -43,12 +28,6 @@ public class Money {
         double result;
         result= (float)value / money.value;
         return new Money( (int)Math.round( result ) );
-    }
-
-    private void checkForNegativeNumbers() {
-        if (value < 0) {
-            throw new IllegalArgumentException( "Money should not be negative. Enter valid money" );
-        }
     }
 
     boolean isLesser(Money money) {

@@ -1,37 +1,16 @@
 package model;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Transaction {
     private String debtor;
     private String creditor;
     private Money payableAmount;
 
-    Transaction(String debtor, String creditor, Money payableAmount) {
-        this.debtor = debtor;
-        this.creditor = creditor;
-        this.payableAmount = payableAmount;
-    }
-
-    @Override
-    public String toString() {
-        return debtor + "->" + creditor + ", " + payableAmount.toString();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Transaction)) return false;
-        Transaction that = (Transaction) o;
-        return Objects.equals( debtor, that.debtor ) &&
-                Objects.equals( creditor, that.creditor ) &&
-                Objects.equals( payableAmount, that.payableAmount );
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash( debtor, creditor, payableAmount );
+    Transaction() {
+        this.debtor = "";
+        this.creditor = "";
+        this.payableAmount = new Money( 0 );
     }
 
     private void setDebtor(String debtor) {
@@ -72,5 +51,17 @@ public class Transaction {
             return totalCreditableAmount;
         }
         return totalDebitableAmount;
+    }
+
+    public String getDebtor() {
+        return debtor;
+    }
+
+    public String getCreditor() {
+        return creditor;
+    }
+
+    public int getPayableAmount() {
+        return payableAmount.getValue();
     }
 }
